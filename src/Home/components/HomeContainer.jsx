@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
-import logo from './Home/images/logo.svg';
-import './Home/styles/home.css';
+import logo from '../images/logo.svg';
+import '../styles/home.css';
 
-class App extends Component {
+class HomeContainer extends Component {
 
     handleImageClick = (event) => {
         console.log('On click of Image');
@@ -23,4 +23,4 @@ class App extends Component {
     }
 }
 
-export default App;
+export default HomeContainer;
