@@ -10,7 +10,6 @@ import appReducer from './reducers';
 let store = createStore(appReducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 
 ReactDOM.render(
-    // wrapping our App component inside Provider
     <Provider store={store}>
         <Routing/>
     </Provider>,

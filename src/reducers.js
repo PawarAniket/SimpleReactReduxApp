@@ -1,9 +1,8 @@
 import {combineReducers} from 'redux';
-import homeReducer from '../src/Home/reducers/home';
-import userReducer from '../src/User/reducers/user';
+import loginReducer from './Login/reducers/login';
 
 const appReducer = combineReducers({
-    homeReducer, userReducer
+    loginReducer
 });
 
 export default appReducer;
