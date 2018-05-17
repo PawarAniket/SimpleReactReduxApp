@@ -3,16 +3,20 @@ import {connect} from 'react-redux';
 import axios from 'axios';
 import {setEmployeeList} from '../reducers/actions';
 import Griddle from 'griddle-react';
-import Pager from './Pager';
 
 class EmployeeListContainer extends React.Component {
 
     componentWillMount() {
-        axios.get('http://reactjstest.sumhr.com/api/testdata', {headers: {'Authorization': this.props.token || ''}}).then((response) => {
-            this.props.setEmployeeList(response.data.data);
-        }).catch((error) => {
-            console.log('Error');
-        });
+        if (this.props.token) {
+            axios.get('http://reactjstest.sumhr.com/api/testdata', {headers: {'Authorization': this.props.token || ''}}).then((response) => {
+                this.props.setEmployeeList(response.data.data);
+            }).catch((error) => {
+                console.log('Error');
+            });
+        }
+        else {
+            this.props.history.push('/');
+        }
     }
 
     render() {
@@ -43,13 +47,11 @@ class EmployeeListContainer extends React.Component {
                 columnName: 'more',
                 displayName: 'More',
                 visible: true
-            }]
+            }];
         return (
             <div>
-                <Griddle data={employeeList} tableClassName="table" columns={column}
-                         columnMetadata={columnMetadata} initialSort="id"
-                         useCustomPagerComponent={true}
-                         customPagerComponent={Pager}/>
+                <Griddle results={employeeList} tableClassName="table" columns={column}
+                         columnMetadata={columnMetadata} initialSort="id"/>
             </div>
         )
     }
