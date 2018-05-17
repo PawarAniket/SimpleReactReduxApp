@@ -4,6 +4,7 @@ import * as l from './actions';
 const initialState = {
     username: null,
     password: null,
+    token: null,
     isUserAuthenticated: false
 }
 
@@ -15,8 +16,8 @@ const loginReducer = (state = Immutable(initialState), action) => {
         case l.SET_PASSWORD:
             return Immutable.set(state, 'password', action.password);
 
-        case l.SET_USER_AUTHENTICATION_STATUS:
-            return Immutable.set(state, 'isUserAuthenticated', action.status);
+        case l.SET_USER_AUTHENTICATION_TOKEN:
+            return Immutable.set(state, 'token', action.token);
 
         default:
             return state;

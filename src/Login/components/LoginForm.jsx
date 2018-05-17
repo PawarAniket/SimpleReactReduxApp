@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from "react-redux";
-import {setUsername, setPassword, setUserAuthenticationStatus} from '../reducers/actions';
+import {setUsername, setPassword, setAuthenticationToken} from '../reducers/actions';
 import axios from 'axios';
 
 class LoginForm extends Component {
@@ -18,10 +18,8 @@ class LoginForm extends Component {
             email: userData.username,
             password: userData.password
         }).then((response) => {
-            setUserAuthenticationStatus(true);
+            this.props.setAuthenticationToken(response.data.data.token);
             this.props.history.push('/info');
-        }).catch((error) => {
-            setUserAuthenticationStatus(false);
         });
     }
 
@@ -55,6 +53,6 @@ const mapStateToProps = (state, props) => {
     }
 };
 
-const mapDispatchToProps = {setUsername, setPassword, setUserAuthenticationStatus};
+const mapDispatchToProps = {setUsername, setPassword, setAuthenticationToken};
 
 export default connect(mapStateToProps, mapDispatchToProps)(LoginForm);
