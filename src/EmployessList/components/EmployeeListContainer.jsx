@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import axios from 'axios';
 import {setEmployeeList} from '../reducers/actions';
 import Griddle from 'griddle-react';
+import Pager from './Pager';
 
 class EmployeeListContainer extends React.Component {
 
@@ -45,7 +46,10 @@ class EmployeeListContainer extends React.Component {
             }]
         return (
             <div>
-                <Griddle data={employeeList} tableClassName="table" resultsPerPage={10} columns={column} columnMetadata={columnMetadata}/>
+                <Griddle data={employeeList} tableClassName="table" columns={column}
+                         columnMetadata={columnMetadata} initialSort="id"
+                         useCustomPagerComponent={true}
+                         customPagerComponent={Pager}/>
             </div>
         )
     }
