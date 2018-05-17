@@ -46,7 +46,7 @@ class EmployeeListContainer extends React.Component {
 
     render() {
         let {employeeList} = this.props;
-        const column = ['id', 'name', 'mobile', 'address','more'];
+        const column = ['id', 'name', 'mobile', 'address', 'more'];
         const columnMetadata = [
             {
                 columnName: 'id',

@@ -13,10 +13,10 @@ const employeeReducer = (state = Immutable(initialState), action) => {
 
         case e.SET_USER_MORE_INFO:
             let userInfo = state.employeeList;
-            let user = userInfo ? userInfo.find(info => info.userid == action.userid) : null;
+            let user = userInfo ? userInfo.find(info => info.userid === action.userid) : null;
             if (user) {
                 userInfo = userInfo.map(info => {
-                    if (info.id == user.id) {
+                    if (info.id === user.id) {
                         return {...info, more: action.data};
                     }
                     else {

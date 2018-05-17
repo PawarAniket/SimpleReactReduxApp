@@ -20,6 +20,9 @@ class LoginForm extends Component {
         }).then((response) => {
             this.props.setAuthenticationToken(response.data.data.token);
             this.props.history.push('/info');
+        }).catch((error) => {
+            this.props.setUsername(null);
+            this.props.setPassword(null);
         });
     }
 
